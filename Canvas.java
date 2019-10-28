@@ -3,7 +3,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
 import javax.swing.JPanel;
 import java.awt.event.*;
 
@@ -13,7 +12,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    // Variables
    private Point posStart;
    private Point posEnd;   
-   private Rectangle drawRect;
+   private java.awt.Rectangle drawRect;
    
    // Final variables
    final private Color colorSelect = new Color(0, 200, 200);
@@ -126,7 +125,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    public void updateRectangle() {
       
       if (drawRect == null) {
-         drawRect = new Rectangle(0, 0, 0, 0);
+         drawRect = new java.awt.Rectangle(0, 0, 0, 0);
       }
       
       int width = (int)Math.abs(posEnd.getX() - posStart.getX());
