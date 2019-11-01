@@ -39,6 +39,17 @@ public class ShapeDrawGUI extends JFrame {
       positionConst.weighty = 0;
       
       // Add buttons and checkboxes below the canvas here
+      JButton squareButton = new Button("Square");
+      squareButton.addActionListener(this);
+      JButton circleButton = new Button("Circle");
+      circleButton.addActionListener(this);
+      JButton triangleButton = new Button("Triangle");
+      triangleButton.addActionListener(this);
+      JButton octagonButton = new Button("Octagon");
+      octagonButton.addActionListener(this);
+       
+      
+      
       
    }
    
