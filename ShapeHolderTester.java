@@ -1,3 +1,13 @@
+
+/**
+ * A <code>ShapeHolderTester</code> class 
+ * @author JosephSalerno
+ * @author BrendanOlski
+ * @author MitchellThomas
+ * Class: ShapeHolderTester.java
+ * Project: 4
+ */
+
 //import shapes.*;
 
 public class ShapeHolderTester {
