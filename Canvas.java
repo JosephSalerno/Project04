@@ -1,3 +1,12 @@
+/**
+ * A <code>Canvas</code> class 
+ * @author JosephSalerno
+ * @author BrendanOlski
+ * @author MitchellThomas
+ * Class: Canvas.java
+ * Project: 4
+ */
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
