@@ -1,4 +1,11 @@
-
+/**
+ * A <code>ShapeDrawGUI</code> class 
+ * @author JosephSalerno
+ * @author BrendanOlski
+ * @author MitchellThomas
+ * Class: ShapeDrawGUI.java
+ * Project: 4
+ */
 
 import javax.swing.*;
 import java.awt.*;
