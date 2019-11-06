@@ -163,7 +163,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
 	   
 	   
    //=====ORANGE=====
-   orangeButton = new JButton("Blue");
+   orangeButton = new JButton("Orange");
 
    // Use "this" class to handle button presses
       orangeButton.addActionListener(this);
@@ -174,7 +174,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
 	   
 	   
    //=====PURPLE=====
-   purpleButton = new JButton("Blue");
+   purpleButton = new JButton("Purple");
 
    // Use "this" class to handle button presses
       purpleButton.addActionListener(this);
