@@ -1,4 +1,11 @@
-
+/**
+ * A <code>ShapeDrawGUI</code> class 
+ * @author JosephSalerno
+ * @author BrendanOlski
+ * @author MitchellThomas
+ * Class: ShapeDrawGUI.java
+ * Project: 4
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +21,9 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    private JButton octagonButton;
    private JButton rectangleButton;
    private JButton ovalButton;
+   private JButton redButton;
+   private JButton greenButton;
+   private JButton blueButton;
    
    public ShapeDrawGUI() {
       
@@ -105,9 +115,39 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    	positionConst.gridx = 5;
    	positionConst.gridy = 2;
    	positionConst.insets = new Insets(10, 10, 10, 10);
-   	add(triangleButton, positionConst);
+      add(triangleButton, positionConst);
+      
+  //=====RED=====
+      redButton = new JButton("Red");
+
+   // Use "this" class to handle button presses
+      redButton.addActionListener(this);
+      positionConst.gridx = 0;
+      positionConst.gridy = 3;
+      positionConst.insets = new Insets(10, 10, 10, 10);
+      add(redButton, positionConst);
+
+   //=====GREEN=====
+      greenButton = new JButton("Green");
+
+   // Use "this" class to handle button presses
+      greenButton.addActionListener(this);
+      positionConst.gridx = 1;
+      positionConst.gridy = 3;
+      positionConst.insets = new Insets(10, 10, 10, 10);
+      add(greenButton, positionConst);
+
+   //=====BLUE=====
+   blueButton = new JButton("Blue");
+
+   // Use "this" class to handle button presses
+      blueButton.addActionListener(this);
+      positionConst.gridx = 2;
+      positionConst.gridy = 3;
+      positionConst.insets = new Insets(10, 10, 10, 10);
+      add(blueButton, positionConst);
 }
-   
+
    public static void main(String[] args) {
        
       // Main frame
