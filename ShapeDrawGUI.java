@@ -24,6 +24,9 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    private JButton redButton;
    private JButton greenButton;
    private JButton blueButton;
+   private JButton yellowButton;
+   private JButton orangeButton;
+   private JButton purpleButton;
    
    public ShapeDrawGUI() {
       
@@ -146,6 +149,39 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
       positionConst.gridy = 3;
       positionConst.insets = new Insets(10, 10, 10, 10);
       add(blueButton, positionConst);
+	   
+
+   //=====YELLOW=====
+   yellowButton = new JButton("Yellow");
+
+   // Use "this" class to handle button presses
+      yellowButton.addActionListener(this);
+      positionConst.gridx = 3;
+      positionConst.gridy = 3;
+      positionConst.insets = new Insets(10, 10, 10, 10);
+      add(yellowButton, positionConst);
+	   
+	   
+   //=====ORANGE=====
+   orangeButton = new JButton("Blue");
+
+   // Use "this" class to handle button presses
+      orangeButton.addActionListener(this);
+      positionConst.gridx = 4;
+      positionConst.gridy = 3;
+      positionConst.insets = new Insets(10, 10, 10, 10);
+      add(orangeButton, positionConst);
+	   
+	   
+   //=====PURPLE=====
+   purpleButton = new JButton("Blue");
+
+   // Use "this" class to handle button presses
+      purpleButton.addActionListener(this);
+      positionConst.gridx = 5;
+      positionConst.gridy = 3;
+      positionConst.insets = new Insets(10, 10, 10, 10);
+      add(purpleButton, positionConst);
 }
 
    public static void main(String[] args) {
