@@ -15,18 +15,25 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
     
    // Class Variables  
    private Canvas canvas;
+   
+   //shapes
    private JButton circleButton;
    private JButton squareButton;
    private JButton triangleButton;
    private JButton octagonButton;
    private JButton rectangleButton;
    private JButton ovalButton;
+   
+   //colors
    private JButton redButton;
    private JButton greenButton;
    private JButton blueButton;
    private JButton yellowButton;
    private JButton orangeButton;
    private JButton purpleButton;
+   
+   //checkbox
+   private JCheckBox filledCheckBox;
    
    public ShapeDrawGUI() {
       
@@ -182,6 +189,19 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
       positionConst.gridy = 3;
       positionConst.insets = new Insets(10, 10, 10, 10);
       add(purpleButton, positionConst);
+      
+      
+      
+  //=====FILLED=====
+      filledCheckBox = new JCheckBox("Filled");
+
+      // Use "this" class to handle button presses
+         filledCheckBox.addActionListener(this);
+         positionConst.gridx = 6;
+         positionConst.gridy = 2;
+         positionConst.insets = new Insets(10, 10, 10, 10);
+         add(filledCheckBox, positionConst);
+         
 }
 
    public static void main(String[] args) {
