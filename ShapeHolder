@@ -1,1 +1,24 @@
 
+public class ShapeHolderIterator implements Iterable<GeometricShape>{
+    
+   int current;
+   ShapeHolderIterator data;
+     
+   // initialize pointer to head of the list for iteration 
+   public IntContainerIter(IntContainer data) 
+   { 
+       this.data = data;
+       current = 0;
+   }
+    
+    // Checks if the next element exists 
+   public boolean hasNext() {
+      return current < data.size();
+   } 
+     
+   // moves the cursor/iterator to next element 
+   public int next() {
+      return data.getInt(current++);
+   }
+
+}    
