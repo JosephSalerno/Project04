@@ -34,6 +34,34 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    
    //checkbox
    private JCheckBox filledCheckBox;
+	
+   //Command Interface
+   interface Command {
+      public void execute();
+   }
+	
+   Class Shape {
+      public void change() {
+	 //Placeholder- wasn't sure what to put here
+         System.out.println("Changing shape"); 
+      }
+   }
+	   
+   //Command Classes
+   Class SwitchToCircle implements Command {
+      private final Shape c;
+      
+      public SwitchToCircle(Shape c) {
+         this.c = c;
+      }
+      
+      @Override 
+      public void execute() {
+         c.change();
+      }
+
+	      
+   }
    
    public ShapeDrawGUI() {
       
