@@ -1,4 +1,3 @@
-
 /**
  * A <code>ShapeHolderTester</code> class 
  * @author JosephSalerno
@@ -8,19 +7,18 @@
  * Project: 4
  */
 
-//import shapes.*;
+import shapes.*;
 
 public class ShapeHolderTester {
    
-   
    public static void main(String[] args) {
-      //ShapeHolder sh = ShapeHolder.getInstance();
+      ShapeHolder sh = ShapeHolder.getInstance();
       
-      //sh.addShape(new Square());
-      //sh.addShape(new Circle());
+      sh.addShape(new Square());
+      sh.addShape(new Circle());
       
-      ///for (GeometricShape shp : sh) {
-      //   System.out.println(shp);
-      //}
+      for (AllShapes shp : sh) {
+         System.out.println(shp);
+      }
    }
 }
