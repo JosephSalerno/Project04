@@ -16,6 +16,10 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    // Class Variables  
    private Canvas canvas;
    
+   private static String color = "white";
+   private static int numShape;
+   private static boolean filled;
+   
    //shapes
    private JButton circleButton;
    private JButton squareButton;
@@ -34,34 +38,6 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    
    //checkbox
    private JCheckBox filledCheckBox;
-	
-   //Command Interface
-   interface Command {
-      public void execute();
-   }
-	
-   Class Shape {
-      public void change() {
-	 //Placeholder- wasn't sure what to put here
-         System.out.println("Changing shape"); 
-      }
-   }
-	   
-   //Command Classes
-   Class SwitchToCircle implements Command {
-      private final Shape c;
-      
-      public SwitchToCircle(Shape c) {
-         this.c = c;
-      }
-      
-      @Override 
-      public void execute() {
-         c.change();
-      }
-
-	      
-   }
    
    public ShapeDrawGUI() {
       
@@ -230,6 +206,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
          positionConst.insets = new Insets(10, 10, 10, 10);
          add(filledCheckBox, positionConst);
          
+   
 }
 
    public static void main(String[] args) {
@@ -245,7 +222,47 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
 
 @Override
 public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
+	//is the shape filled
+	this.filled = filledCheckBox.isSelected();
 	
+	//if buttons are pressed, update values
+	if (e.getActionCommand() == "Circle")
+		this.numShape = 0;
+	else if (e.getActionCommand() == "Oval") 
+		this.numShape = 1;
+	else if (e.getActionCommand() == "Square")
+		this.numShape = 2;
+	else if (e.getActionCommand() == "Rectangle")
+		this.numShape = 3;
+	else if (e.getActionCommand() == "Triangle")
+		this.numShape = 4;
+	else if (e.getActionCommand() == "Octagon")
+		this.numShape = 5;
+	else if (e.getActionCommand() == "Red")
+		this.color = "red";
+	else if (e.getActionCommand() == "Blue")
+		this.color = "blue";
+	else if (e.getActionCommand() == "Green")
+		this.color = "green";
+	else if (e.getActionCommand() == "Yellow")
+		this.color = "yellow";
+	else if (e.getActionCommand() == "Purple")
+		this.color = "purple";
+	else if (e.getActionCommand() == "Orange")
+		this.color = "orange";
+	
+	//set variables in canvas equal to these new ones
+	this.canvas.shapeToDraw = numShape;
+	this.canvas.isFilled = filled;
+	this.canvas.newColor = color;
+	
+	//test
+//	System.out.println("Num: " + numShape);
+//	System.out.println("Color: " +color);
+//	System.out.println("Filled?: " + filled);
+	
+
 }
+
+
 }
