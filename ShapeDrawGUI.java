@@ -41,9 +41,9 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    }
 	
    Class Shape {
-      public void change() {
-	 //Placeholder- wasn't sure what to put here
-         System.out.println("Changing shape"); 
+      public void setShapeState() {
+
+         System.out.println("Shape state has been updated"); 
       }
    }
 	   
@@ -57,11 +57,87 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
       
       @Override 
       public void execute() {
-         c.change();
+         c.setShapeState();
       }
 
 	      
    }
+	
+   Class SwitchToSquare implements Command {
+      private final Shape s;
+      
+      public SwitchToSquare(Shape s) {
+         this.s = s;
+      }
+      
+      @Override 
+      public void execute() {
+         s.setShapeState();
+      }
+
+	      
+   }
+	
+   Class SwitchToTriangle implements Command {
+      private final Shape t;
+      
+      public SwitchToTriangle(Shape t) {
+         this.t = t;
+      }
+      
+      @Override 
+      public void execute() {
+         t.setShapeState();
+      }
+
+	      
+   }
+	
+   Class SwitchToOctagon implements Command {
+      private final Shape oct;
+      
+      public SwitchToOctagon(Shape oct) {
+         this.oct = oct;
+      }
+      
+      @Override 
+      public void execute() {
+         oct.setShapeState();
+      }
+
+	      
+   }
+	
+   Class SwitchToRectangle implements Command {
+      private final Shape rect;
+      
+      public SwitchToRectangle(Shape rect) {
+         this.rect = rect;
+      }
+      
+      @Override 
+      public void execute() {
+         rect.setShapeState();
+      }
+
+	      
+   }
+	
+   Class SwitchToOval implements Command {
+      private final Shape oval;
+      
+      public SwitchToOval(Shape oval) {
+         this.oval = oval;
+      }
+      
+      @Override 
+      public void execute() {
+         oval.setShapeState();
+      }
+
+	      
+   }
+
    
    public ShapeDrawGUI() {
       
