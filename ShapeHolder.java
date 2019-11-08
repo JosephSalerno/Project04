@@ -35,8 +35,8 @@ public class ShapeHolder implements Iterator<AllShapes>{
         index++;
      }
    
-     public AllShapes[] getShapes() {
-        return shapes;
+     public AllShapes[] getShape(int i) {
+          return shapes[i];
      }
 
 }
@@ -60,7 +60,7 @@ public class ShapeHolderIterator implements Iterator<AllShapes>{
     
      // moves the cursor/iterator to next element 
      public AllShapes next() {
-          return data.getInt(current++);
+          return data.getShape(current++);
      }
 }
 
