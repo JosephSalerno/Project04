@@ -9,14 +9,14 @@
 
 package shapes;
 
-import java.lang.reflect.Array;
+import java.util.Array;
 import java.util.Iterator;
 
 public class ShapeHolder implements Iterator<AllShapes>{
 
     private static ShapeHolder instance;
     private AllShapes []shapes = new AllShapes[50];
-    private int index;
+    private int size = 0;
     
     public static ShapeHolder getInstance(){
        if (instance == null) {
@@ -29,10 +29,9 @@ public class ShapeHolder implements Iterator<AllShapes>{
           return new ShapeHolderIterator(this);
      } 
     
-     public void addShape(Object name) {
-        int index = 0;
-        shapes[i] = new name();
-        index++;
+     public void addShape(AllShapes name) {
+        shapes[size] = name;
+        size++;
      }
    
      public AllShapes[] getShape(int i) {
