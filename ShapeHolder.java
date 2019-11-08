@@ -25,7 +25,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
        return instance;
     }
 
-     public ShapeHolderIterator iterator() {
+     public Iterator<AllShapes> iterator() {
           return new ShapeHolderIterator(this);
      } 
     
