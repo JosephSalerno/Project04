@@ -1,5 +1,10 @@
 /**
- * A <code>ShapeDrawGUI</code> class 
+ * A <code>ShapeDrawGUI</code> class that sets the dimensions and buttons
+ * of the GUI window. Also updates the states of the current shape, current 
+ * color, and whether or not the shape is filled, and tells the GUI
+ * to draw this shape.
+ * 
+ * 
  * @author JosephSalerno
  * @author BrendanOlski
  * @author MitchellThomas
@@ -11,6 +16,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 public class ShapeDrawGUI extends JFrame implements ActionListener {
     
    // Class Variables  
@@ -39,8 +46,10 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    //checkbox
    private JCheckBox filledCheckBox;
    
-
- 
+   /*
+    * Sets the layout of the GUI window, as well as the buttons and 
+    * the check box using ActionListeners.
+    */
    public ShapeDrawGUI() {
       
       // Use a GridBagLayout
@@ -69,7 +78,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
       positionConst.gridy = 1;
       positionConst.weighty = 0;
       
-      // Add buttons and checkboxes below the canvas here
+      // Add buttons and check boxes below the canvas here
       
       //=====CIRCLE=====
       circleButton = new JButton("Circle");
@@ -210,6 +219,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    
 }
 
+
    public static void main(String[] args) {
        
       // Main frame
@@ -221,7 +231,19 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
        
    }
 
-@Override
+   
+
+
+/**
+ * @param e specifies the action the user has completed
+ * by pressing a specific button.
+ * This method tells the GUI which shape and color to draw once the user 
+ * has chosen a certain shape by clicking a combination of buttons,
+ * and whether or not the shape is filled. It also sets the state variables
+ * in Canvas equal to the new assigned values, and has a tester that outputs
+ * text to confirm that the variables have been updated correctly.
+ *
+ */ 
 public void actionPerformed(ActionEvent e) {
 	//is the shape filled
 	this.filled = filledCheckBox.isSelected();
