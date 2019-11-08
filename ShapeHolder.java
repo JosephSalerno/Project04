@@ -9,14 +9,14 @@
 
 package shapes;
 
-import java.util.Array;
+import java.lang.reflect.Array;
 import java.util.Iterator;
 
-public class ShapeHolder implements Iterator<AllShapes>{
+public class ShapeHolder implements Iterable<AllShapes>{
 
     private static ShapeHolder instance;
     private AllShapes []shapes = new AllShapes[50];
-    private int size = 0;
+    private int index;
     
     public static ShapeHolder getInstance(){
        if (instance == null) {
@@ -29,19 +29,36 @@ public class ShapeHolder implements Iterator<AllShapes>{
           return new ShapeHolderIterator(this);
      } 
     
-     public void addShape(AllShapes name) {
-        shapes[size] = name;
-        size++;
+     public void addShape(AllShapes s) {
+        shapes[index] = s;
+        index++;
      }
    
-     public AllShapes[] getShape(int i) {
-          return shapes[i];
+     public AllShapes[] getShapes() {
+        return shapes;
      }
+     
+     public int size()
+     {
+    	 return index;
+     }
+     
+     public AllShapes getShape(int i)
+     {
+    	 return shapes[i];
+     }
+     public void setShape(int i, AllShapes newVal)
+     {
+    	 shapes[i] = newVal;
+     }
+
+	
+
 
 }
 
-public class ShapeHolderIterator implements Iterator<AllShapes>{
-   
+ class ShapeHolderIterator implements Iterator<AllShapes>{
+  
      int current;
      ShapeHolder data;
      
@@ -59,30 +76,9 @@ public class ShapeHolderIterator implements Iterator<AllShapes>{
     
      // moves the cursor/iterator to next element 
      public AllShapes next() {
-          return data.getShape(current++);
+    	 return data.getShape(current++);
      }
-}
 
 
 
-//    private AllShapes [] shapes;
-//    int pos;
-   
-//    // initialize pointer to head of the list for iteration 
-//    public ShapeIterator(AllShapes []shapes){
-//         this.shapes = shapes;
-//    }
-   
-//    // Checks if the next element exists
-//    public boolean hasNext() {
-//         if(pos >= shapes.length || shapes[pos] == null) {
-//             return false;
-//             }
-//         return true;
-//    }
-
-//    // moves the cursor/iterator to next element
-//    public AllShapes next() {
-//         return shapes[pos++];
-//    }
-
+ }
