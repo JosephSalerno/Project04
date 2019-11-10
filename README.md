@@ -14,11 +14,13 @@ etc
 etc etc
 
 ===ShapeHolder===
-General description of the class and how it works
+ShapeHolder.java contains a ShapeHolder class and ShapeHolderIterator class both working together to store an array of shapes of type AllShapes in order to maintain shapes and their data from the Canvas.
+
 --Variables--
-instanceVariable1: For doing something important
-instanceVariable2: Something else about this variable
-StaticVariable: Something static, describe its purpose
+index: private int variable keeping track of the pointer in the array shapes (also the size of the array shapes)
+shapes: private AllShapes array that holds the shapes and its data for ShapeHolder class, max size of 50 shapes
+instance: private static instance of ShapeHolder
+
 --Methods--
 Methods list and their purpose, any errors thrown
 
