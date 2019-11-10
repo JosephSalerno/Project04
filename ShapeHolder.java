@@ -22,6 +22,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
     
     /**
      * Create or get an instance of ShapeHolder.
+     * @return an instance of ShapeHolder
      */
     public static ShapeHolder getInstance(){
        if (instance == null) {
@@ -66,6 +67,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
      
      /**
      * Return shape at specific index
+     * @param i - the index of the shape being returned
      * @return shapes[i] - shape at index i
      */
      public AllShapes getShape(int i)
