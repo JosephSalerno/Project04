@@ -60,7 +60,28 @@ actionPerformed(ActionEvent e) - This method tells the GUI which shape and color
 main() - starts main frame and shows window
 
 ===Canvas===
-General description of the class and how it works
+ A Canvas class that sets the color and fill of the shape and allows the user to drag the mouse to create a new shape. Also sticks the shape to the display when the mouse is released.
+ 
 --Variables--
+posStart: private Point variable
+posEnd: private Point variable  
+drawRect: private java.awt.Rectangle variable
+isFilled: public boolean variable that keeps track of if the shape is filled or not
+newColor: public String variable 
+shapeToDraw: public String variable 
+drawnShape: private AllShapes 
+holder: private ShapeHolder instance variable
 
 --Methods--
+Canvas() - Constructor method that establishes default settings for shape and background color, and adds listeners.
+paintComponent(Graphics g) - Sets the color of the shape based on which shape and color buttons have been pressed, and draws the shape from shapeholder as well as drawing the shape with its outlining rectangle as the mouse is dragged
+mouseEntered(MouseEvent e) - 
+mouseExited(MouseEvent e) - 
+mouseMoved(MouseEvent e) - 
+mousePressed(MouseEvent e) - Tells the program what to do when the user presses down on the mouse.
+mouseReleased(MouseEvent e) - Tells the program what to do when the user releases the mouse.
+mouseDragged(MouseEvent e) - Tells the program what to do when the user drags the mouse.
+mouseClicked(MouseEvent e) - Tells the program what to do when the user clicks the mouse.
+updateRectangle() - Updates the rectangle based on the first and current mouse positions.
+changeColor(String c, Graphics g) - Method changes the color of the canvas
+drawShape("Shape" s, Graphics g) - draws "Shape" s
