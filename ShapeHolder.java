@@ -20,7 +20,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
     private AllShapes []shapes = new AllShapes[50];
     private int index;
     
-    /*
+    /**
      * Create or get an instance of ShapeHolder.
      */
     public static ShapeHolder getInstance(){
@@ -30,7 +30,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
        return instance;
     }
 	
-    /*
+    /**
      * iterator method to implement the iterator on the iterable
      * @return instance of ShapeHolderIterator
      */
@@ -64,7 +64,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
     	 return index;
      }
      
-     /*
+     /**
      * Return shape at specific index
      * @return shapes[i] - shape at index i
      */
@@ -83,7 +83,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
      }
 }
 
-/*
+/**
 * <code>ShapeHolderIterator</code> class that implements Iterator<AllShapes>
 * to be an iterator for the iterable, ShapeHolder.
 */
@@ -92,7 +92,7 @@ class ShapeHolderIterator implements Iterator<AllShapes>{
      int current;
      ShapeHolder data;
      
-     /*
+     /**
      * Initialize pointer to head of the array for iteration
      * @param instance of ShapeHolder
      */
@@ -102,7 +102,7 @@ class ShapeHolderIterator implements Iterator<AllShapes>{
        current = 0;
      }
 
-     /*
+     /**
      * Checks if the next element exists
      * @return boolean - true or false if next element exists
      */
@@ -110,7 +110,7 @@ class ShapeHolderIterator implements Iterator<AllShapes>{
           return current < data.size();
      } 
     
-     /*
+     /**
      * Moves the cursor/iterator to the next element
      * @return shape - return next element in shapes array
      */	
