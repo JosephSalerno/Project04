@@ -39,7 +39,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
           return new ShapeHolderIterator(this);
      } 
     
-    /*
+    /**
      * Add a shape to the shapes array in ShapeHolder
      * @param s - a shape of type AllShapes
      */
@@ -48,7 +48,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
         index++;
      }
    
-     /*
+     /**
      * Return the array of shapes in ShapeHolder
      * @return shapes - array of shapes
      */
@@ -56,7 +56,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
         return shapes;
      }
      
-     /*
+     /**
      * Return the size of the shapes array
      * @return index - size of the shapes array
      */
@@ -75,7 +75,7 @@ public class ShapeHolder implements Iterable<AllShapes>{
     	 return shapes[i];
      }
 	
-     /*
+     /**
      * Add a shape at a specific index
      * @param i - int i for index 
      * @param newVal - shape to be added of type AllShapes
