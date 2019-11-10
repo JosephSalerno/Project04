@@ -14,7 +14,7 @@ etc
 etc etc
 
 ===ShapeHolder===
-ShapeHolder.java contains a ShapeHolder class and ShapeHolderIterator class both working together to store an array of shapes of type AllShapes in order to maintain shapes and their data from the Canvas.
+ShapeHolder.java contains a ShapeHolder class that works with the ShapeHolderIterator class to store an array of shapes of type AllShapes in order to maintain shapes and their data from the Canvas.
 
 --Variables--
 index: private int variable keeping track of the pointer in the array shapes (also the size of the array shapes)
@@ -22,7 +22,25 @@ shapes: private AllShapes array that holds the shapes and its data for ShapeHold
 instance: private static instance of ShapeHolder
 
 --Methods--
-Methods list and their purpose, any errors thrown
+getInstance() - 
+iterator() - 
+addShape(AllShapes s) - 
+getShapes() - 
+size() - 
+getShape(int i) - 
+setShape(int i, AllShapes newVal) - 
+
+===ShapeHolderIterator===
+ShapeHolderIterator is a class in ShapeHolder.java that works to iterate the iterable array of shapes in the ShapeHolder class.
+
+--Variables--
+current: 
+data: 
+
+--Methods--
+ShapeHolderIterator(ShapeHolder data) - 
+hasNext() - 
+next() - 
 
 ===ShapeDrawGUI===
 General description of the class and how it works
