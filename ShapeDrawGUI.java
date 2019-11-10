@@ -18,6 +18,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+/*
+ * Class that initializes and sets the 
+ * layout for the GUI buttons and check box.
+ */
+
+
 public class ShapeDrawGUI extends JFrame implements ActionListener {
     
    // Class Variables  
@@ -50,6 +56,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
     * Sets the layout of the GUI window, as well as the buttons and 
     * the check box using ActionListeners.
     */
+   
    public ShapeDrawGUI() {
       
       // Use a GridBagLayout
@@ -100,7 +107,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    	positionConst.insets = new Insets(10, 10, 10, 10);
    	add(squareButton, positionConst);
    	
-  //=====RECTANGLE=====
+   //=====RECTANGLE=====
    	rectangleButton = new JButton("Rectangle");
    
    // Use "this" class to handle button presses
@@ -110,7 +117,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    	positionConst.insets = new Insets(10, 10, 10, 10);
    	add(rectangleButton, positionConst);
    	
-  //=====OVAL=====
+   //=====OVAL=====
    	ovalButton = new JButton("Oval");
    
    // Use "this" class to handle button presses
@@ -121,29 +128,29 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    	add(ovalButton, positionConst);
    	
    	
-  //=====OCTAGON=====
+   //=====OCTAGON=====
    	octagonButton = new JButton("Octagon");
    
    // Use "this" class to handle button presses
-   	octagonButton.addActionListener(this);
-   	positionConst.gridx = 4;
-   	positionConst.gridy = 2;
-   	positionConst.insets = new Insets(10, 10, 10, 10);
-   	add(octagonButton, positionConst);
+   	  octagonButton.addActionListener(this);
+   	  positionConst.gridx = 4;
+   	  positionConst.gridy = 2;
+   	  positionConst.insets = new Insets(10, 10, 10, 10);
+   	  add(octagonButton, positionConst);
    	
    	
-  //=====TRIANGLE=====
+   //=====TRIANGLE=====
    	triangleButton = new JButton("Triangle");
    
    // Use "this" class to handle button presses
-   	triangleButton.addActionListener(this);
-   	positionConst.gridx = 5;
-   	positionConst.gridy = 2;
-   	positionConst.insets = new Insets(10, 10, 10, 10);
+   	  triangleButton.addActionListener(this);
+   	  positionConst.gridx = 5;
+   	  positionConst.gridy = 2;
+   	  positionConst.insets = new Insets(10, 10, 10, 10);
       add(triangleButton, positionConst);
       
-  //=====RED=====
-      redButton = new JButton("Red");
+   //=====RED=====
+   redButton = new JButton("Red");
 
    // Use "this" class to handle button presses
       redButton.addActionListener(this);
@@ -153,7 +160,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
       add(redButton, positionConst);
 
    //=====GREEN=====
-      greenButton = new JButton("Green");
+   greenButton = new JButton("Green");
 
    // Use "this" class to handle button presses
       greenButton.addActionListener(this);
@@ -244,6 +251,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
  * text to confirm that the variables have been updated correctly.
  *
  */ 
+   
 public void actionPerformed(ActionEvent e) {
 	//is the shape filled
 	this.filled = filledCheckBox.isSelected();
