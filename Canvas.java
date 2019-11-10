@@ -53,11 +53,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    @Override
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
-      ShapeHolderIterator<AllShapes> iter = holder.iterator();
+      Iterator<AllShapes> iter = holder.iterator();
       // Draw any shapes in the shape holder here
-      while (holder.hasNext())
+      while (iter.hasNext())
       {
-    	  AllShapes current = holder.next();
+    	  AllShapes current = iter.next();
     	  
     	  //Check the color of current
     	  if(current.getColor() == "red")
