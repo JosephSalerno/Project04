@@ -9,7 +9,9 @@ import shapes.*;
 import java.util.Iterator;
 
 /**
- * A <code>Canvas</code> class 
+ * A <code>Canvas</code> class that sets the color and fill of the shape
+ * and uses the coordinates of the mouse to determine the shape's size. 
+ * Also sticks the shape to the display when the mouse is released.
  * @author JosephSalerno
  * @author BrendanOlski
  * @author MitchellThomas
@@ -30,37 +32,45 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    private ShapeHolder holder = ShapeHolder.getInstance();
   
    
-   // Final variables
+
    final private Color colorSelect = new Color(0, 0, 0);
    
-   // Constructors and setup methods
+   /*
+    * Constructor method that establishes default settings for shape and 
+    * background color, and adds listeners.
+    */
+	
    public Canvas() {
       super();
       this.setOpaque(true);
       this.setBackground(Color.WHITE);
       
-      // No selection rectangle to draw
+
       drawRect = null;
       
-      // Listen for mouse movement or input
+
       addMouseListener(this);      
       addMouseMotionListener(this);
       
       
    }
    
-   // Listeners
+   /*
+    * Sets the color of the shape based on which shape and color buttons have been pressed, 
+    * and checks the instance of current.
+    */
+	
    @Override
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
       g.setColor(new Color(0,0,0));
       Iterator<AllShapes> iter = holder.iterator();
-      // Draw any shapes in the shape holder here
+
       while (iter.hasNext())
       {
     	  AllShapes current = iter.next();
     	  
-    	  //Check the color of current
+
     	  if(current.getColor() == "red")
           {
          	 g.setColor(new Color(255,0,0));
@@ -85,7 +95,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
          	 g.setColor(new Color(255,255,0));
           }
           
-    	  //check the instance of current
+
     	  if (current instanceof Circle)
     	  {
     		  g.drawOval(current.getX(), current.getY(), 
@@ -138,13 +148,18 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     	  }
       }
       
-      // Draw drag rectangle if it is there
+      /*
+       * Checks to see if the rectangle is there, and draws both
+       * the rectangle and the current shape inside the
+       * rectangle if it is.
+       * 
+       */
+	   
       if (drawRect != null) {
     	 g.setColor(new Color(0,0,0));
          g.drawRect((int)drawRect.getX(), (int)drawRect.getY(),
                     (int)drawRect.getWidth(), (int)drawRect.getHeight());
          
-         // Draw the current shape here
          
          //======COLORS=======//
          if(newColor == "red")
@@ -266,7 +281,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    }
    
    
-   // Needed for mouse listeners
+
    @Override
    public void mouseEntered(MouseEvent e) {
    }
@@ -281,20 +296,28 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
+   /*
+    * Tells the program what to do when the user presses down on the mouse.
+    */
+	
    @Override
    public void mousePressed(MouseEvent e) {
       if (e.getButton() == MouseEvent.BUTTON1) {
          posStart = new Point(e.getX(), e.getY());
          posEnd = new Point(e.getX(), e.getY());
          
-         // Create new shape here
+
          
          updateRectangle();
          
         
       }
    }
-
+	
+   /*
+    * Tells the program what to do when the user releases the mouse.
+    */
+	
    @Override
    public void mouseReleased(MouseEvent e) {
       if (e.getButton() == MouseEvent.BUTTON1) {
@@ -313,6 +336,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
+   /* 
+    * Tells the program what to do when the user drags the mouse.
+    */
+	
    @Override
    public void mouseDragged(MouseEvent e) {
       if (drawRect != null) {
@@ -323,7 +350,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 
 
 
-   // Needed for mouse listeners
+   /*
+    * Tells the program what to do when the user clicks the mouse.
+    */
+	
    @Override
    public void mouseClicked(MouseEvent e) {
 	 //clickLocation = e.getPoint();
@@ -331,7 +361,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
-   // Updates the selection rectangle based on the first and current mouse positions
+   /*
+    * Updates the rectangle based on the first and 
+    * current mouse positions.
+    */
+	
    public void updateRectangle() {
       
       if (drawRect == null) {
@@ -343,12 +377,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       int top = (int)Math.min(posStart.getY(), posEnd.getY());
       
     
-      // Set up rectangle to the correct four corners      
+     
       drawRect.setLocation(left, top);
       
       drawRect.setSize(width, height);
       
-      // Let paintComponent handle this later
+
       repaint();
    }
 
