@@ -6,6 +6,7 @@ import java.awt.Point;
 import javax.swing.JPanel;
 import java.awt.event.*;
 import shapes.*;
+import java.util.Iterator;
 
 /**
  * A <code>Canvas</code> class 
@@ -26,7 +27,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    public String newColor;
    public String shapeToDraw;
    private AllShapes drawnShape;
-   private ShapeHolder holder;
+   private ShapeHolder holder = ShapeHolder.getInstance();
   
    
    // Final variables
@@ -52,7 +53,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    @Override
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
-      
+      ShapeHolderIterator<AllShapes> iter = holder.iterator();
       // Draw any shapes in the shape holder here
       while (holder.hasNext())
       {
@@ -63,8 +64,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
           {
          	 g.setColor(new Color(255,0,0));
           }
-          else if(current.getColor() == "green")
-          {
+          else if(current.getColor() == "green"){
          	 g.setColor(new Color(0,255,0));
           }
           else if(current.getColor() == "blue")
@@ -263,11 +263,6 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
-   // Highly recommended to create this method for assisting in the paintComponent method
-   //private void drawGenericShape(Graphics g, GeometricShape s) {
-      // Draw any sort of shape to the canvas
-      
-   //}
    
    // Needed for mouse listeners
    @Override
