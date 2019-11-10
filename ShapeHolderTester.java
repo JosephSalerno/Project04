@@ -1,5 +1,7 @@
 /**
- * A <code>ShapeHolderTester</code> class 
+ * A <code>ShapeHolderTester</code> class that tests the ShapeHolder class, which holds 
+ * shapes of type All Shapes in an array.
+ *
  * @author JosephSalerno
  * @author BrendanOlski
  * @author MitchellThomas
