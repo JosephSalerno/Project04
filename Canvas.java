@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 /**
  * A <code>Canvas</code> class that sets the color and fill of the shape
- * and uses the coordinates of the mouse to determine the shape's size. 
+ * and allows the user to drag the mouse to create a new shape
  * Also sticks the shape to the display when the mouse is released.
  * @author JosephSalerno
  * @author BrendanOlski
@@ -30,12 +30,9 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    public String shapeToDraw;
    private AllShapes drawnShape;
    private ShapeHolder holder = ShapeHolder.getInstance();
-  
-   
 
-   final private Color colorSelect = new Color(0, 0, 0);
    
-   /*
+   /**
     * Constructor method that establishes default settings for shape and 
     * background color, and adds listeners.
     */
@@ -55,96 +52,50 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
-   /*
+   /**
     * Sets the color of the shape based on which shape and color buttons have been pressed, 
-    * and checks the instance of current.
+    * and draws the shape from shapeholder as well as drawing the shape with its outlining rectangle
+    * as the mouse is dragged
     */
-	
-   @Override
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
-      g.setColor(new Color(0,0,0));
+      
+      //retrieve shapeholder iterator
       Iterator<AllShapes> iter = holder.iterator();
 
       while (iter.hasNext())
       {
+    	  //retrieve shape
     	  AllShapes current = iter.next();
     	  
+    	  //change color of shape
+    	  changeColor(current.getColor(), g);
 
-    	  if(current.getColor() == "red")
-          {
-         	 g.setColor(new Color(255,0,0));
-          }
-          else if(current.getColor() == "green"){
-         	 g.setColor(new Color(0,255,0));
-          }
-          else if(current.getColor() == "blue")
-          {
-         	 g.setColor(new Color(0,0,255));
-          }
-          else if(current.getColor() == "purple")
-          {
-         	 g.setColor(new Color(255,0,255));
-          }
-          else if(current.getColor() == "orange")
-          {
-         	 g.setColor(new Color(255,128,0));
-          }
-          else if(current.getColor() == "yellow")
-          {
-         	 g.setColor(new Color(255,255,0));
-          }
-          
-
+    	  //checks what shape is being retrieved
     	  if (current instanceof Circle)
     	  {
-    		  g.drawOval(current.getX(), current.getY(), 
-    				  ((Circle) current).getRadius(), ((Circle) current).getRadius());
-    		  if(current.isFilled()) {
-    			  g.fillOval(current.getX(), current.getY(),
-    					  ((Circle) current).getRadius(), ((Circle) current).getRadius());
-    		  }
+    		  drawCircle((Circle)current, g);
     	  }
     	  else if (current instanceof Oval)
     	  {
-    		  g.drawOval(current.getX(), current.getY(), 
-    				  ((Oval) current).getRadius(), ((Oval) current).getHeight());
-    		  if(current.isFilled()) {
-    			  g.fillOval(current.getX(), current.getY(),
-    					  ((Oval) current).getRadius(), ((Oval) current).getHeight());
-    	  }
+    		  drawOval((Oval)current, g);
+    	  
     	  }
     	  else if (current instanceof Square)
     	  {
-    		  g.drawPolygon(((Square) current).getXCoordinates(), 
-    				  ((Square) current).getYCoordinates(), 4);
-    	         if(current.isFilled())
-    	       		g.fillPolygon(((Square) current).getXCoordinates(), 
-    	       				((Square) current).getYCoordinates(), 4);
+    		  drawSquare((Square)current, g);
     	  }
     	  else if (current instanceof Octagon)
     	  {
-    		  g.drawPolygon(((Octagon) current).getXCoordinates(), 
-    				  ((Octagon) current).getYCoordinates(), 8);
-    	         if(current.isFilled())
-    	       		g.fillPolygon(((Octagon) current).getXCoordinates(), 
-    	       				((Octagon) current).getYCoordinates(), 8);
+    		  drawOctagon((Octagon)current, g);
     	  }
     	  else if (current instanceof Triangle)
     	  {
-    		  g.drawPolygon(((Triangle) current).getXCoordinates(), 
-    				  ((Triangle) current).getYCoordinates(), 3);
-    	         if(current.isFilled())
-    	       		g.fillPolygon(((Triangle) current).getXCoordinates(), 
-    	       				((Triangle) current).getYCoordinates(), 3);
+    		  drawTriangle((Triangle)current, g);
     	  }
     	  else if (current instanceof Rectangle)
     	  {
-    		  g.drawPolygon(((Rectangle) current).getXCoordinates(), 
-    				  ((Rectangle) current).getYCoordinates(), 4);
-    	         if(current.isFilled())
-    	       		g.fillPolygon(((Rectangle) current).getXCoordinates(), 
-    	       				((Rectangle) current).getYCoordinates(), 4);  
+    		  drawRectangle((Rectangle)current, g);  
     	  }
       }
       
@@ -161,46 +112,21 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
                     (int)drawRect.getWidth(), (int)drawRect.getHeight());
          
          
-         //======COLORS=======//
-         if(newColor == "red")
-         {
-        	 g.setColor(new Color(255,0,0));
-         }
-         else if(newColor == "green")
-         {
-        	 g.setColor(new Color(0,255,0));
-         }
-         else if(newColor == "blue")
-         {
-        	 g.setColor(new Color(0,0,255));
-         }
-         else if(newColor == "purple")
-         {
-        	 g.setColor(new Color(255,0,255));
-         }
-         else if(newColor == "orange")
-         {
-        	 g.setColor(new Color(255,128,0));
-         }
-         else if(newColor == "yellow")
-         {
-        	 g.setColor(new Color(255,255,0));
-         }
+         //======Change Color=======//
+         changeColor(newColor, g);
          
          //=====SHAPES======//
          
          
          //=====CIRCLE======//
+         //what shape needs to be drawn//
          if(shapeToDraw.equals("circle"))
          {
         
          Circle circ = new Circle(Math.min((int)drawRect.getWidth(), (int)drawRect.getHeight()), 
         		 newColor, (int)drawRect.getX(), (int)drawRect.getY(), isFilled);
          drawnShape = circ;
-         
-         g.drawOval(circ.getX(), circ.getY(), circ.getRadius(), circ.getRadius());
-         	if(isFilled)
-         		g.fillOval(circ.getX(), circ.getY(), circ.getRadius(), circ.getRadius());
+         drawCircle(circ, g);
          }
          
        //=====OVAL======//
@@ -211,10 +137,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
          Oval o = new Oval((int)drawRect.getWidth(), (int)drawRect.getHeight(),
         		 newColor, (int)drawRect.getX(), (int)drawRect.getY(), isFilled);
          drawnShape = o;
-         
-         g.drawOval(o.getX(), o.getY(), o.getRadius(), o.getHeight());
-         if(isFilled)
-      		g.fillOval(o.getX(), o.getY(), o.getRadius(), o.getHeight());
+         drawOval(o, g);
          }
          
        //=====SQUARE======//
@@ -224,10 +147,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
          Square s  = new Square(Math.min((int)drawRect.getWidth(), (int)drawRect.getHeight()), 
         		 newColor, (int)drawRect.getX(), (int)drawRect.getY(), isFilled);
          drawnShape = s;
-         
-         g.drawPolygon(s.getXCoordinates(), s.getYCoordinates(), 4);
-         if(isFilled)
-       		g.fillPolygon(s.getXCoordinates(), s.getYCoordinates(), 4);
+         drawSquare(s, g);
          }
          
        //=====RECTANGLE======//
@@ -236,15 +156,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
         	Rectangle r = new Rectangle(newColor, (int)drawRect.getX(), (int)drawRect.getY(), 
         			 (int)drawRect.getWidth(), (int)drawRect.getHeight(), isFilled); 
         	drawnShape = r;
-        	
-        	g.drawRect((int)drawRect.getX(), (int)drawRect.getY(),
-                    (int)drawRect.getWidth(), (int)drawRect.getHeight());
-             
-             if(isFilled)
-             {
-            	 g.fillRect((int)drawRect.getX(), (int)drawRect.getY(),
-                         (int)drawRect.getWidth(), (int)drawRect.getHeight());
-             }
+        	drawRectangle(r, g);
          }
          
        //=====OCTAGON======//
@@ -254,11 +166,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
         	 Octagon oct  = new Octagon(newColor, (int)drawRect.getX(), (int)drawRect.getY(),
         			 (int)drawRect.getWidth(), (int)drawRect.getHeight(), isFilled);
         	 drawnShape = oct;
-             g.drawPolygon(oct.getXCoordinates(), oct.getYCoordinates(), 8);
-             
-             
-             if(isFilled)
-           		g.fillPolygon(oct.getXCoordinates(), oct.getYCoordinates(), 8);
+             drawOctagon(oct, g);
              }
              
          
@@ -270,11 +178,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
         	 Triangle t  = new Triangle((int)drawRect.getWidth(), (int)drawRect.getHeight(),
         			 newColor, (int)drawRect.getX(), (int)drawRect.getY(), isFilled);
         	 drawnShape = t;
-             g.drawPolygon(t.getXCoordinates(), t.getYCoordinates(), 3);
-             
-             if(isFilled)
-           		g.fillPolygon(t.getXCoordinates(), t.getYCoordinates(), 3);
-         
+             drawTriangle(t, g);
          }
       }
       
@@ -296,29 +200,22 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
-   /*
+   /**
     * Tells the program what to do when the user presses down on the mouse.
     */
-	
-   @Override
    public void mousePressed(MouseEvent e) {
       if (e.getButton() == MouseEvent.BUTTON1) {
          posStart = new Point(e.getX(), e.getY());
          posEnd = new Point(e.getX(), e.getY());
-         
-
-         
          updateRectangle();
          
         
       }
    }
 	
-   /*
+   /**
     * Tells the program what to do when the user releases the mouse.
     */
-	
-   @Override
    public void mouseReleased(MouseEvent e) {
       if (e.getButton() == MouseEvent.BUTTON1) {
          posEnd.setLocation(e.getX(), e.getY());
@@ -336,11 +233,9 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
    }
    
-   /* 
+   /**
     * Tells the program what to do when the user drags the mouse.
     */
-	
-   @Override
    public void mouseDragged(MouseEvent e) {
       if (drawRect != null) {
          posEnd.setLocation(e.getX(), e.getY());
@@ -350,23 +245,20 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 
 
 
-   /*
+   /**
     * Tells the program what to do when the user clicks the mouse.
     */
-	
-   @Override
    public void mouseClicked(MouseEvent e) {
 	 //clickLocation = e.getPoint();
 	 updateRectangle();
       
    }
    
-   /*
+   /**
     * Updates the rectangle based on the first and 
     * current mouse positions.
     */
-	
-   public void updateRectangle() {
+public void updateRectangle() {
       
       if (drawRect == null) {
          drawRect = new java.awt.Rectangle(0, 0, 0, 0);
@@ -385,6 +277,117 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 
       repaint();
    }
-
+/**
+* Method changes the color of the canvas
+* @param c - represents the color being changed to
+* @param g - graphics of the given canvas
+*/
+   public void changeColor(String c, Graphics g)
+   {
+	   if(c.equals("red"))
+       {
+      	 g.setColor(new Color(255,0,0));
+       }
+       else if(c.equals("green")){
+      	 g.setColor(new Color(0,255,0));
+       }
+       else if(c.equals("blue"))
+       {
+      	 g.setColor(new Color(0,0,255));
+       }
+       else if(c.equals("purple"))
+       {
+      	 g.setColor(new Color(255,0,255));
+       }
+       else if(c.equals("orange"))
+       {
+      	 g.setColor(new Color(255,128,0));
+       }
+       else if(c.equals("yellow"))
+       {
+      	 g.setColor(new Color(255,255,0));
+       }
+   }
    
+   /**
+   * Draws a circle
+   * @param c - represents a circle that needs to be drawn
+   * @param g - graphics of the given canvas
+   */
+   public void drawCircle(Circle c, Graphics g)
+   {
+	   g.drawOval(c.getX(), c.getY(), c.getRadius(), c.getRadius());
+	   
+		  if(c.isFilled()) 
+			  g.fillOval(c.getX(), c.getY(), c.getRadius(), c.getRadius()); 
+   }
+   
+   /**
+    * Draws an oval
+    * @param o - represents a oval that needs to be drawn
+    * @param g - graphics of the given canvas
+    */
+   public void drawOval(Oval o, Graphics g)
+   {
+	   g.drawOval(o.getX(), o.getY(), o.getRadius(), o.getHeight());
+	   
+		  if(o.isFilled()) 
+			  g.fillOval(o.getX(), o.getY(), o.getRadius(), o.getHeight());
+   }
+   
+   /**
+    * Draws a square
+    * @param s - represents a square that needs to be drawn
+    * @param g - graphics of the given canvas
+    */
+   public void drawSquare(Square s, Graphics g)
+   {
+	   g.drawPolygon(s.getXCoordinates(), s.getYCoordinates(), 4);
+	   
+	         if(s.isFilled())
+	       		g.fillPolygon(s.getXCoordinates(), s.getYCoordinates(), 4);
+   }
+   
+   /**
+    * Draws a rectangle
+    * @param r - represents a rectangle that needs to be drawn
+    * @param g - graphics of the given canvas
+    */
+   public void drawRectangle(Rectangle r, Graphics g)
+   {
+	   g.drawPolygon(r.getXCoordinates(), r.getYCoordinates(), 4);
+	   
+       if(r.isFilled())
+     		g.fillPolygon(r.getXCoordinates(), r.getYCoordinates(), 4);
+   }
+   
+   /**
+    * Draws an octagon
+    * @param o - represents an octagon that needs to be drawn
+    * @param g - graphics of the given canvas
+    */
+   public void drawOctagon(Octagon o, Graphics g)
+   {
+	   g.drawPolygon(o.getXCoordinates(), o.getYCoordinates(), 8);
+	   
+       if(o.isFilled())
+     		g.fillPolygon(o.getXCoordinates(), o.getYCoordinates(), 8);
+   }
+   
+   /**
+    * Draws a triangle
+    * @param t - represents a triangle that needs to be drawn
+    * @param g - graphics of the given canvas
+    */
+   public void drawTriangle(Triangle t, Graphics g)
+   {
+	   g.drawPolygon(t.getXCoordinates(), t.getYCoordinates(), 3);
+	   
+       if(t.isFilled())
+     		g.fillPolygon(t.getXCoordinates(), t.getYCoordinates(), 3);
+   }
+   
+		  
+   
+
 }
