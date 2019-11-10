@@ -53,6 +53,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
    @Override
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
+      g.setColor(new Color(0,0,0));
       Iterator<AllShapes> iter = holder.iterator();
       // Draw any shapes in the shape holder here
       while (iter.hasNext())
@@ -107,7 +108,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     	  {
     		  g.drawPolygon(((Square) current).getXCoordinates(), 
     				  ((Square) current).getYCoordinates(), 4);
-    	         if(isFilled)
+    	         if(current.isFilled())
     	       		g.fillPolygon(((Square) current).getXCoordinates(), 
     	       				((Square) current).getYCoordinates(), 4);
     	  }
@@ -115,7 +116,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     	  {
     		  g.drawPolygon(((Octagon) current).getXCoordinates(), 
     				  ((Octagon) current).getYCoordinates(), 8);
-    	         if(isFilled)
+    	         if(current.isFilled())
     	       		g.fillPolygon(((Octagon) current).getXCoordinates(), 
     	       				((Octagon) current).getYCoordinates(), 8);
     	  }
@@ -123,7 +124,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     	  {
     		  g.drawPolygon(((Triangle) current).getXCoordinates(), 
     				  ((Triangle) current).getYCoordinates(), 3);
-    	         if(isFilled)
+    	         if(current.isFilled())
     	       		g.fillPolygon(((Triangle) current).getXCoordinates(), 
     	       				((Triangle) current).getYCoordinates(), 3);
     	  }
@@ -131,7 +132,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     	  {
     		  g.drawPolygon(((Rectangle) current).getXCoordinates(), 
     				  ((Rectangle) current).getYCoordinates(), 4);
-    	         if(isFilled)
+    	         if(current.isFilled())
     	       		g.fillPolygon(((Rectangle) current).getXCoordinates(), 
     	       				((Rectangle) current).getYCoordinates(), 4);  
     	  }
@@ -139,6 +140,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
       
       // Draw drag rectangle if it is there
       if (drawRect != null) {
+    	 g.setColor(new Color(0,0,0));
          g.drawRect((int)drawRect.getX(), (int)drawRect.getY(),
                     (int)drawRect.getWidth(), (int)drawRect.getHeight());
          
