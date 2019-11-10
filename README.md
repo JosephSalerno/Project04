@@ -22,25 +22,25 @@ shapes: private AllShapes array that holds the shapes and its data for ShapeHold
 instance: private static instance of ShapeHolder
 
 --Methods--
-getInstance() - 
-iterator() - 
-addShape(AllShapes s) - 
-getShapes() - 
-size() - 
-getShape(int i) - 
-setShape(int i, AllShapes newVal) - 
+getInstance() - Create or get an instance of ShapeHolder.
+iterator() - iterator method to implement the iterator on the iterable shapes array
+addShape(AllShapes s) - Add a shape to the shapes array in ShapeHolder, parameter is a shape of type AllShapes
+getShapes() - Return the array of shapes in ShapeHolder
+size() - Return the size of the shapes array
+getShape(int i) - Return shape at specific index i
+setShape(int i, AllShapes newVal) - Add a shape (newVal) at a specific index i
 
 ===ShapeHolderIterator===
 ShapeHolderIterator is a class in ShapeHolder.java that works to iterate the iterable array of shapes in the ShapeHolder class.
 
 --Variables--
-current: 
-data: 
+current: int variable for the current index in the shapes array
+data: instance variable of ShapeHolder, holds information on shapes array
 
 --Methods--
-ShapeHolderIterator(ShapeHolder data) - 
-hasNext() - 
-next() - 
+ShapeHolderIterator(ShapeHolder data) - Initialize pointer to head of the array for iteration
+hasNext() - Checks if the next element exists, return true or false if next element exists
+next() - Moves the cursor/iterator to the next element, returns the next element in the shapes array
 
 ===ShapeDrawGUI===
 General description of the class and how it works
