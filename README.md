@@ -43,10 +43,21 @@ hasNext() - Checks if the next element exists, return true or false if next elem
 next() - Moves the cursor/iterator to the next element, returns the next element in the shapes array
 
 ===ShapeDrawGUI===
-General description of the class and how it works
+A ShapeDrawGUI class that sets the dimensions and buttons of the GUI window. Also updates the states of the current shape, current color, and whether or not the shape is filled, and tells the GUI to draw this shape.
+
 --Variables--
+canvas: private instance variable of type Canvas 
+colorSelected: private static String variable used to set color of shape in the GUI frame
+shapeSelected: private static String variable used to set shape in the GUI frame
+filled: private static boolean variable for if the shape is filled or not
+"shape"Button: private JButton variable for each "shape" in our shapes package and in the GUI
+"color"Button: private JButton variable for each "color" available in the GUI frame
+filledCheckBox: private JCheckBox variable for the check box button that fills in color of a shape in the GUI frame
 
 --Methods--
+ShapeDrawGUI() - Sets the layout of the GUI window, as well as the buttons and the check box using ActionListeners.
+actionPerformed(ActionEvent e) - This method tells the GUI which shape and color to draw once the user has chosen a certain shape by clicking a combination of buttons, and whether or not the shape is filled. It also sets the state variables in Canvas equal to the new assigned values, and has a tester that outputs text to confirm that the variables have been updated correctly.
+main() - starts main frame and shows window
 
 ===Canvas===
 General description of the class and how it works
