@@ -63,21 +63,21 @@ main() - starts main frame and shows window
  A Canvas class that sets the color and fill of the shape and allows the user to drag the mouse to create a new shape. Also sticks the shape to the display when the mouse is released.
  
 --Variables--
-posStart: private Point variable
-posEnd: private Point variable  
-drawRect: private java.awt.Rectangle variable
+posStart: private Point variable, start of user's mouse action event
+posEnd: private Point variable, end of user's mouse action event
+drawRect: private java.awt.Rectangle variable, rectangle that surrounds the shapes being drawn
 isFilled: public boolean variable that keeps track of if the shape is filled or not
-newColor: public String variable 
-shapeToDraw: public String variable 
-drawnShape: private AllShapes 
-holder: private ShapeHolder instance variable
+newColor: public String variable, color being used for the shapes being drawn
+shapeToDraw: public String variable, shape to be drawn (appears within dragged rectangle)
+drawnShape: private AllShapes, shape to be added to ShapeHolder
+holder: private ShapeHolder instance variable, used to store shapes and be iterated through when finalizing drawn shapes
 
 --Methods--
 Canvas() - Constructor method that establishes default settings for shape and background color, and adds listeners.
 paintComponent(Graphics g) - Sets the color of the shape based on which shape and color buttons have been pressed, and draws the shape from shapeholder as well as drawing the shape with its outlining rectangle as the mouse is dragged
-mouseEntered(MouseEvent e) - 
-mouseExited(MouseEvent e) - 
-mouseMoved(MouseEvent e) - 
+mouseEntered(MouseEvent e) - needed for mouse listeners
+mouseExited(MouseEvent e) - needed for mouse listeners
+mouseMoved(MouseEvent e) - needed for mouse listeners
 mousePressed(MouseEvent e) - Tells the program what to do when the user presses down on the mouse.
 mouseReleased(MouseEvent e) - Tells the program what to do when the user releases the mouse.
 mouseDragged(MouseEvent e) - Tells the program what to do when the user drags the mouse.
