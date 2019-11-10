@@ -56,6 +56,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     * Sets the color of the shape based on which shape and color buttons have been pressed, 
     * and draws the shape from shapeholder as well as drawing the shape with its outlining rectangle
     * as the mouse is dragged
+    * @param g - graphic of display of type Graphics
     */
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
