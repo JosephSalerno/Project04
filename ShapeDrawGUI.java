@@ -17,13 +17,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-/*
- * Class that initializes and sets the 
- * layout for the GUI buttons and check box.
- */
-
-
 public class ShapeDrawGUI extends JFrame implements ActionListener {
     
    // Class Variables  
@@ -52,7 +45,7 @@ public class ShapeDrawGUI extends JFrame implements ActionListener {
    //checkbox
    private JCheckBox filledCheckBox;
    
-   /*
+   /**
     * Sets the layout of the GUI window, as well as the buttons and 
     * the check box using ActionListeners.
     */
